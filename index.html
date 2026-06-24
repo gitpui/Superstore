@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Store</title>
+  <style>
+    /* ============================================================
+       BASE STYLES — เอ (P1) สร้างไว้ตั้งแต่แรก ห้ามแก้
+       ============================================================ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Sarabun', 'Segoe UI', sans-serif;
+      background: #f8f7f4;
+      color: #1a1a1a;
+    }
+
+    /* ── ป้ายบอกว่าใครแก้ (เพื่อ Demo เท่านั้น) ── */
+    .demo-label {
+      position: fixed;
+      top: 8px;
+      right: 12px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 9999;
+      pointer-events: none;
+      font-family: monospace;
+    }
+
+    /* ============================================================
+       NAVBAR — บี (P2) แก้ส่วนนี้
+       branch: feature/navbar
+       ============================================================ */
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e8e5df;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: #e05a2b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #555;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #e05a2b;
+    }
+
+    .nav-cta {
+      background: #e05a2b;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem !important;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       HERO SECTION — ซี (P3) แก้ส่วนนี้
+       branch: feature/hero
+       ============================================================ */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1a1a1a;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 em {
+      font-style: normal;
+      color: #e05a2b;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      background: #e05a2b;
+      color: #fff;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover {
+      background: #c74d22;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1a1a1a;
+      padding: 12px 26px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: #aaa;
+    }
+
+    .hero-image {
+      background: linear-gradient(135deg, #fdf0ea 0%, #fce4d6 100%);
+      border-radius: 16px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    /* ── Product Cards (ส่วนของ Hero) ── */
+    .products {
+      background: #fff;
+      padding: 3rem 2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .products-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .products h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 1rem;
+      background: #fff;
+      transition: box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .product-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .product-price {
+      font-size: 0.85rem;
+      color: #e05a2b;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       FOOTER — ดี (P4) แก้ส่วนนี้
+       branch: feature/footer
+       ============================================================ */
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 2.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-brand .logo span {
+      color: #e05a2b;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #888;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #888;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      max-width: 960px;
+      margin: 1.5rem auto 0;
+      padding-top: 1.2rem;
+      border-top: 1px solid #333;
+      font-size: 0.8rem;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- ============================================================
+       ✏️  บี (P2) แก้ตรงนี้ — NAVBAR
+       branch: feature/navbar
+       ============================================================ -->
+  <nav>
+    <div class="nav-logo">Super<span>Store</span></div>
+    <ul class="nav-links">
+      <li><a href="#">หน้าแรก</a></li>
+      <li><a href="product.html">สินค้า</a></li>
+      <li><a href="promotion.html">โปรโมชัน</a></li>
+      <li><a href="about.html">เกี่ยวกับเรา</a></li>
+      <li><a href="contact.html">ติดต่อเรา</a></li>
+      <li><a href="#" class="nav-cta">สั่งซื้อ</a></li>
+
+    </ul>
+  </nav>
+  <!-- ✅ จบส่วนของบี -->
+
+
+  <!-- ============================================================
+       ✏️  ซี (P3) แก้ตรงนี้ — HERO SECTION + PRODUCTS
+       branch: feature/hero
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>สินค้าครบ<br/><em>ราคาดี</em><br/>ส่งถึงบ้าน</h1>
+      <p>
+        Super Store รวมสินค้าคุณภาพมากกว่า 10,000 รายการ
+        ส่งด่วนทั่วประเทศ ภายใน 24 ชั่วโมง
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary">ดูสินค้าทั้งหมด</button>
+        <button class="btn-secondary">โปรโมชันวันนี้</button>
+      </div>
+    </div>
+    <div class="hero-image">🛒</div>
+  </section>
+
+  <section class="products">
+    <div class="products-inner">
+      <h2>สินค้าแนะนำ</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-icon">📱</div>
+          <div class="product-name">Smartphone XS</div>
+          <div class="product-price">฿12,900</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">💻</div>
+          <div class="product-name">Laptop Pro 14</div>
+          <div class="product-price">฿35,900</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">🎧</div>
+          <div class="product-name">Headphone ANC</div>
+          <div class="product-price">฿4,290</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon">⌚</div>
+          <div class="product-name">Smart Watch S2</div>
+          <div class="product-price">฿8,990</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ✅ จบส่วนของซี -->
+
+
+  <!-- ============================================================
+       ✏️  ดี (P4) แก้ตรงนี้ — FOOTER
+       branch: feature/footer
+       ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Super<span>Store</span></div>
+        <p>ช้อปสะดวก ราคาดี ส่งทั่วไทย<br/>เปิดให้บริการทุกวัน 9:00 – 22:00 น.</p>
+      </div>
+      <div class="footer-col">
+        <h4>บริการ</h4>
+        <ul>
+          <li><a href="#">สถานะการสั่งซื้อ</a></li>
+          <li><a href="#">นโยบายคืนสินค้า</a></li>
+          <li><a href="#">ช่องทางชำระเงิน</a></li>
+          <li><a href="#">ติดต่อ Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>บริษัท</h4>
+        <ul>
+          <li><a href="#">เกี่ยวกับเรา</a></li>
+          <li><a href="#">ร่วมงานกับเรา</a></li>
+          <li><a href="#">ข่าวสาร</a></li>
+          <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 SuperStore Co., Ltd. All rights reserved.</span>
+      <span>🇹🇭 ประเทศไทย</span>
+    </div>
+  </footer>
+  <!-- ✅ จบส่วนของดี -->
+
+</body>
+</html>
