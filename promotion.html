@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรโมชันพิเศษ - SuperStore</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background-color: #ffffff; }
+        
+        /* Navbar Style สไตล์เดียวกับหน้าหลัก */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid #eee; }
+        .logo { color: #e0532b; font-weight: bold; font-size: 24px; text-decoration: none; }
+        .menu a { margin-left: 20px; text-decoration: none; color: #333; font-size: 15px; }
+        .menu a.active { color: #e0532b; font-weight: bold; }
+        .btn-order { background-color: #e0532b; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        
+        /* Main Content */
+        .container { padding: 50px 5%; min-height: 60vh; }
+        .page-title { font-size: 32px; font-weight: bold; color: #e0532b; margin-bottom: 10px; }
+        .page-subtitle { color: #666; margin-bottom: 40px; }
+        
+        /* Promotion Banner (นาย B สามารถมาวาดกล่องโปรเพิ่มตรงนี้ได้) */
+        .promo-list { display: flex; flex-direction: column; gap: 20px; }
+        .promo-card { background-color: #fbeee9; border-left: 5px solid #e0532b; padding: 30px; border-radius: 8px; }
+        .promo-badge { background-color: #e0532b; color: white; padding: 4px 10px; font-size: 12px; border-radius: 4px; font-weight: bold; display: inline-block; margin-bottom: 10px; }
+        .promo-name { font-size: 22px; font-weight: bold; margin: 0 0 10px 0; color: #222; }
+        .promo-desc { margin: 0; color: #555; line-height: 1.6; }
+        
+        /* Footer Style */
+        .footer { background-color: #1a1a1a; color: #fff; padding: 40px 5%; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .footer-col h4 { color: #e0532b; margin-top: 0; }
+        .footer-col p, .footer-col ul { color: #aaa; padding: 0; list-style: none; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html" class="logo">SuperStore</a>
+        <div class="menu">
+            <a href="index.html">หน้าแรก</a>
+            <a href="product.html">สินค้า</a>
+            <a href="promotion.html" class="active">โปรโมชัน</a> <a href="about.html">เกี่ยวกับเรา</a>
+            <a href="contact.html">ติดต่อเรา</a>
+            <a href="#" class="btn-order">สั่งซื้อ</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">โปรโมชันเด็ดประจำวัน</h1>
+        <p class="page-subtitle">รวมโค้ดส่วนลดและดีลสุดคุ้ม ห้ามพลาดก่อนโค้ดหมด!</p>
+        
+        <div class="promo-list">
+            <div class="promo-card">
+                <span class="promo-badge">HOT DEAL</span>
+                <h3 class="promo-name">ลดกระหน่ำกลางปี ส่วนลดเพิ่ม 10% ทั้งเว็บ</h3>
+                <p class="promo-desc">เพียงกรอกโค้ด <strong>SUPER10</strong> เมื่อช้อปครบ 2,000 บาทขึ้นไป ด่วน! จำกัด 100 สิทธิ์ต่อวัน</p>
+            </div>
+            
+
+        </div>
+    </div>
+
+</body>
+</html>
