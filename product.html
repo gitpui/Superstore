@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้าทั้งหมด - SuperStore</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background-color: #ffffff; }
+        
+        /* Navbar Style สไตล์เดียวกับหน้าหลัก */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; border-bottom: 1px solid #eee; }
+        .logo { color: #e0532b; font-weight: bold; font-size: 24px; text-decoration: none; }
+        .menu a { margin-left: 20px; text-decoration: none; color: #333; font-size: 15px; }
+        .menu a.active { color: #e0532b; font-weight: bold; }
+        .btn-order { background-color: #e0532b; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        
+        /* Main Content */
+        .container { padding: 50px 5%; min-height: 60vh; }
+        .page-title { font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+        .page-subtitle { color: #666; margin-bottom: 40px; }
+        
+        /* Product Grid (นาย A สามารถมาปรับแต่งเพิ่มตรงนี้ได้) */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; }
+        .product-card { border: 1px solid #eee; padding: 25px; border-radius: 8px; text-align: center; background-color: #fff; transition: transform 0.2s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .product-icon { font-size: 50px; margin-bottom: 15px; }
+        .product-name { font-weight: bold; font-size: 18px; margin-bottom: 8px; }
+        .product-price { color: #e0532b; font-weight: bold; font-size: 16px; }
+        
+        /* Footer Style */
+        .footer { background-color: #1a1a1a; color: #fff; padding: 40px 5%; font-size: 14px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .footer-col h4 { color: #e0532b; margin-top: 0; }
+        .footer-col p, .footer-col ul { color: #aaa; padding: 0; list-style: none; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html" class="logo">SuperStore</a>
+        <div class="menu">
+            <a href="index.html">หน้าแรก</a>
+            <a href="product.html" class="active">สินค้า</a> <a href="promotion.html">โปรโมชัน</a>
+            <a href="about.html">เกี่ยวกับเรา</a>
+            <a href="contact.html">ติดต่อเรา</a>
+            <a href="#" class="btn-order">สั่งซื้อ</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">สินค้าทั้งหมด</h1>
+        <p class="page-subtitle">พบกับสินค้าคุณภาพเยี่ยมมากกว่า 10,000 รายการ การันตีราคาดีที่สุด</p>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">📱</div>
+                <div class="product-name">Smartphone XS</div>
+                <div class="product-price">฿12,900</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">💻</div>
+                <div class="product-name">Laptop Pro 14</div>
+                <div class="product-price">฿35,900</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🎧</div>
+                <div class="product-name">Headphone ANC</div>
+                <div class="product-price">฿4,290</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">⌚</div>
+                <div class="product-name">Smart Watch S2</div>
+                <div class="product-price">฿8,990</div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
